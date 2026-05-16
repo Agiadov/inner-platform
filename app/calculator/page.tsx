@@ -1,0 +1,1 @@
+export default function Calculator(){return <main className="container"><section className="card"><h1>Калькулятор</h1><p className="muted">Цена товара + доставка + комиссия сервиса + возможные пошлины = финальная стоимость до оплаты. Расчёт предварительный.</p></section></main>}

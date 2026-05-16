@@ -1,0 +1,1 @@
+export default function Terms(){return <main className="container"><section className="card"><h1>Условия сервиса</h1><p className="muted">Финальная стоимость фиксируется до оплаты. Условия оплаты и доставки согласуются перед выкупом. Мы заранее предупреждаем о сроках, комиссиях и возможных рисках.</p></section></main>}

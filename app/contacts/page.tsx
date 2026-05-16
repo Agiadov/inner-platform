@@ -1,0 +1,1 @@
+export default function Contacts(){return <main className="container"><section className="card"><h1>Контакты</h1><p className="muted">Telegram: @gymarms</p><a className="btn" href="https://t.me/gymarms" target="_blank">Написать в Telegram</a></section></main>}

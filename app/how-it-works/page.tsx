@@ -1,0 +1,1 @@
+export default function How(){return <main className="container"><section className="card"><h1>Как это работает</h1><div className="grid grid4"><div className="notice">1. Заявка</div><div className="notice">2. Поиск</div><div className="notice">3. Предложение</div><div className="notice">4. Доставка</div></div></section></main>}

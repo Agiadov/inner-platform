@@ -1,0 +1,6 @@
+export type RequestItem = {id:string;requestNumber:string;itemName:string;brand?:string;productUrl?:string;size?:string;budget?:string;city:string;contactMethod:string;contactValue:string;comment?:string;status:string;createdAt:string;history:{title:string;date:string}[];options?:any[]}
+export const STATUS:any={received:'Получена',searching:'В поиске',found:'Найдены варианты',pending:'Ожидает оплату',shipping:'В пути',delivered:'Доставлено',cancelled:'Отменено'}
+export function getRequests():RequestItem[]{ if(typeof window==='undefined')return[]; try{return JSON.parse(localStorage.getItem('inner_requests')||'[]')}catch{return[]} }
+export function saveRequests(items:RequestItem[]){ localStorage.setItem('inner_requests',JSON.stringify(items)) }
+export function addRequest(data:any){ const items=getRequests(); const id=String(Date.now()); const requestNumber='#'+id.slice(-5); const item={id,requestNumber,status:'received',createdAt:new Date().toLocaleString('ru-RU'),history:[{title:'Заявка получена',date:new Date().toLocaleString('ru-RU')}],...data}; saveRequests([item,...items]); return item }
+export function updateRequest(id:string,patch:any){ const items=getRequests().map(r=>r.id===id?{...r,...patch}:r); saveRequests(items); return items.find(r=>r.id===id) }
