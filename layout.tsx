@@ -1,0 +1,6 @@
+'use client'
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { getRequests, saveRequests, STATUS } from '@/components/storage'
+const statuses=['searching','found','pending','shipping','delivered']
+export default function Admin(){const [items,setItems]=useState<any[]>([]);useEffect(()=>setItems(getRequests()),[]);const setStatus=(id:string,status:string)=>{const up=items.map(r=>r.id===id?{...r,status,history:[...(r.history||[]),{title:STATUS[status],date:new Date().toLocaleString('ru-RU')}]}:r);setItems(up);saveRequests(up)};return <main className="container"><section className="card"><h1>Админ-панель</h1>{!items.length?<div className="notice"><h2>Пока нет заявок</h2><p className="muted">Когда клиент отправит заявку, она появится здесь.</p></div>:<div className="grid">{items.map(r=><div className="card soft" key={r.id}><div className="row" style={{justifyContent:'space-between'}}><div><b>{r.requestNumber}</b><h2>{r.itemName||r.brand}</h2><p className="muted">{r.city} · {r.contactMethod}: {r.contactValue}</p></div><span className="badge blue">{STATUS[r.status]}</span></div><div className="row">{statuses.map(s=><button key={s} className="btn secondary" onClick={()=>setStatus(r.id,s)}>{STATUS[s]}</button>)}<Link className="btn" href={`/dashboard/request?id=${r.id}`}>Открыть</Link></div></div>)}</div>}</section></main>}

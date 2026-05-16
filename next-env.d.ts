@@ -1,0 +1,1 @@
+export default function About(){return <main className="container"><section className="card"><h1>О INNER</h1><p className="muted">INNER — сервис поиска вещей по фото или ссылке: одежда, аксессуары, компьютерная периферия и редкие товары под заказ.</p></section></main>}
